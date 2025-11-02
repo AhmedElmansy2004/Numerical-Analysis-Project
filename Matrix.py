@@ -20,13 +20,26 @@ class Matrix:
     def output(self):
         for i in range(self.rows):
             for j in range(self.cols):
-                print(self.matrix[i][j])
-            print()
+                elementij = self.matrix[i][j]
+                display = int(elementij) if elementij.is_integer() else elementij
+                print(f"{display:>8}", end="")
+            print("\n")
 
     def clear(self):
         self.rows = 0
         self.cols = 0
         self.matrix = []
+
+    def transpose(self):
+        transposed = Matrix(self.rows, self.cols)
+        for i in range(transposed.rows):
+            row = []
+            for j in range(transposed.cols):
+                row.append(self.matrix[j][i])
+            transposed.matrix.append(row)
+
+        return transposed
+
 
     def rank(self):     #do the the rank code here
 
